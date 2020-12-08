@@ -1,0 +1,112 @@
+<div class="bg">
+<div class="container">
+
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-xs-12 col-sm-6">
+     
+      <h3 class="text-center">Register Form</h3>
+      <!-- <div *ngIf="invalidCredentialMsg" style="color:red">{{invalidCredentialMsg}}</div><br/> -->
+      <div >
+        <div class="form">
+              <form [formGroup]="registerform" name="registerform" (ngSubmit)="submitform()">
+                <!-- name -->
+                <div class="form-group">
+                  <label>Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    formControlName="username"
+                    [(ngModel)]="username"
+                    id="username"
+                    placeholder="ex:name"
+                  />
+                </div>
+                <!-- error message -->
+                <div
+                  class="text-danger "
+                  *ngIf="
+                    this.registerform.controls.username.invalid &&
+                    (this.registerform.controls.username.touched || this.registerform.controls.username.dirty)
+                  "
+                >
+                  <small class="text-danger" *ngIf="!this.registerform.controls.username.valid"
+                    >Enter a valid Name</small
+                  >
+                </div>
+      
+                <!-- email -->
+                <div class="form-group">
+                  <label for="email">Email address:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    [(ngModel)]="email"
+                    placeholder="ex:abc@gmail.com"
+                  />
+                </div>
+                <!-- error message -->
+                <div
+                  class="text-danger "
+                  *ngIf="
+                    this.registerform.controls.email.invalid &&
+                    (this.registerform.controls.email.touched ||
+                      this.registerform.controls.email.dirty)
+                  "
+                >
+                  <small class="text-danger" *ngIf="!this.registerform.controls.email.valid"
+                    >Enter a valid Email
+                  </small>
+                </div>
+      
+                <!-- password -->
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    class="form-control"
+                    formControlName="password"
+                    [(ngModel)]="password"
+                    placeholder="ex:Kr@1"
+                  />
+                </div>
+                <!-- error message -->
+                <div
+                  class="text-danger "
+                  *ngIf="
+                    this.registerform.controls.password.invalid &&
+                    (this.registerform.controls.password.touched ||
+                      this.registerform.controls.password.dirty)
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="!this.registerform.controls.password.valid"
+                    >the password should contain one uppercase,lowercase,special character and number
+                  </small>
+                </div>
+                <!-- submit button -->
+                <div class="text-center">
+                <button type="submit"  class="btn btn-primary " [disabled]="!registerform.valid">Submit</button>
+              </div>
+                
+               
+                
+              </form>
+              <div class="text-center">
+                  <p class="text-danger pt-2 ">already a member please<button size="30px" type="button" class="btn btn-link" routerLink="/login">Login</button></p>
+                 
+      
+              </div>
+              
+            </div>
+      </div>
+
+
+    </div>
+    
+  </div>
+
+
+</div>
+</div>

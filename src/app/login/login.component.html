@@ -1,0 +1,80 @@
+<div class="bg">
+  <div class="row">
+  <div class="col-md-4 col-xs-0 col-sm-2"></div>
+
+
+<!-- <div *ngIf="invalidCredentialMsg" style="color:red">{{invalidCredentialMsg}}</div><br/> -->
+<div class="col-md-4 col-xs-12 col-sm-8 pt-5 ">
+  <h3 class="text-center pb-2">Sign In</h3>
+	<div class="form px-2">
+        <form [formGroup]="loginform" name="loginform" (ngSubmit)="submitform()">
+          <!-- name -->
+         
+          <!-- email -->
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              [(ngModel)]="email"
+              placeholder="ex:abc@gmail.com"
+            />
+          </div>
+          <!-- error message -->
+          <div
+            class="text-danger "
+            *ngIf="
+              this.loginform.controls.email.invalid &&
+              (this.loginform.controls.email.touched ||
+                this.loginform.controls.email.dirty)
+            "
+          >
+            <small class="text-danger" *ngIf="!this.loginform.controls.email.valid"
+              >Enter a valid Email
+            </small>
+          </div>
+
+          <!-- password -->
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              class="form-control"
+              formControlName="password"
+              [(ngModel)]="password"
+              placeholder="ex:Kr@1"
+            />
+          </div>
+          <!-- error message -->
+          <div
+            class="text-danger "
+            *ngIf="
+              this.loginform.controls.password.invalid &&
+              (this.loginform.controls.password.touched ||
+                this.loginform.controls.password.dirty)
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="!this.loginform.controls.password.valid"
+              >the password should contain one uppercase,lowercase,special character and number
+            </small>
+          </div>
+          <!-- submit button -->
+          <div class="text-center">
+          <button type="submit"  class="btn btn-primary text-center" [disabled]="!loginform.valid">Submit</button>
+         
+        </div>
+        </form>
+
+        <div class="text-center">
+          <p>If you are a New Member please<button type="button" class="btn btn-link" routerLink="/register">Register</button></p>
+         
+      </div>
+
+      </div>
+</div>
+  
+<div class="col-md-4 col-xs-0  col-sm-2"></div>
+  </div>
+</div>
